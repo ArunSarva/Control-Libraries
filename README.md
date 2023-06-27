@@ -38,9 +38,11 @@ You will also see any lint errors in the console.
 To use the Input Fields first we need to Import the Components and we need to pass the Props.\
 Props:
 
-1. `callback` - we need to pass the handle change function to get the entered value by the user
-   ![Alt text](image.png) - declaired function
-   ![Alt text](image-2.png) - passing function as props
+1. `callback` - we need to pass the handle change function to get the entered value by the user.\
+   Declaired function.\
+    ![Alt text](image.png) .\
+    passing function as props.\
+    ![Alt text](image-2.png)
 2. `type` - we need to pass the TYPE for the field in that we can specify weather it is text,email or password filed
 3. `Name` - name is for the label of the perticular inputfiled
 
