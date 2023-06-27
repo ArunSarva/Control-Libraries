@@ -7,13 +7,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Once you clone this repo first run:
 
 ### `npm Install `
-or 
+
+or
+
 ### `yarn Install`
 
 Once installation is completed we need to start running our application for that we need to run
 
 ### `npm start`
-or 
+
+or
+
 ### `yarn Start`
 
 It runs the app in development mode.\
@@ -23,16 +27,23 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 **In this Application, we have reusable components!**
+
 1. `Input Fields`
 2. `File uploader`
 3. `Grid`
 4. `Chart`
 
-**1. Input Fields!**
-To use the Input Fields first we need to Import the Components and we need to pass the Props.\
-Props
+##1. Input Fields
 
-   
+To use the Input Fields first we need to Import the Components and we need to pass the Props.\
+Props:
+
+1. `callback` - we need to pass the handle change function to get the entered value by the user
+   ![Alt text](image.png) - declaired function
+   ![Alt text](image-2.png) - passing function as props
+2. `type` - we need to pass the TYPE for the field in that we can specify weather it is text,email or password filed
+3. `Name` - name is for the label of the perticular inputfiled
+
 ### `npm test `
 
 Launches the test runner in the interactive watch mode.\
