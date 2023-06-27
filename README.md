@@ -27,6 +27,8 @@ You will also see any lint errors in the console.
 2. `File uploader`
 3. `Grid`
 4. `Chart`
+
+   *Input Fields*
    
 ### `npm test `
 
