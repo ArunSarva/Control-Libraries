@@ -28,7 +28,10 @@ You will also see any lint errors in the console.
 3. `Grid`
 4. `Chart`
 
-   *Input Fields*
+**1. Input Fields!**
+To use the Input Fields first we need to Import the Components and we need to pass the Props.\
+Props
+
    
 ### `npm test `
 
