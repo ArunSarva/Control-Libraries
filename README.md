@@ -43,7 +43,7 @@ Props:
     ![Alt text](image.png) .\
     passing function as props.\
     ![Alt text](image-2.png)
-2. `type` - we need to pass the TYPE for the field in that we can specify whether it is text, email or password filed
+2. `type` - we need to pass the TYPE for the field in that we can specify whether it is text, email, or password filed
 3. `Name` - the name is for the label of the particular input field
 
 ### 2. File uploader
@@ -63,7 +63,7 @@ To use the Grid first we need to Import the Components and we need to pass the P
 
 #### Props
 
-1. `Data set` - we need to pass data that we wanted to be in the grid (it may be image,text,form and etc.)
+1. `Data set` - we need to pass data that we wanted to be in the grid (it may be image, text, form and etc.)
 
 ### 3. Chart
 
@@ -72,9 +72,9 @@ To use the Chart first we need to Import the Components and we need to pass the 
 #### Props
 
 1. `ChartType` - we need to pass Chart type (whether it may be Bar chart, Line chart, Pie chart, Radar chart,)
-2. `Labels` - label will be the name of the x-axis data
+2. `Labels` - a label will be the name of the x-axis data
 3. `ChartName` - will the name of the chart
-4. `DataSet` - The Dataset will be the value for the chart
+4. `DataSet` - The Dataset will be the value for the chart.\
    ![Alt text](image-4.png)
 
 ### `npm test `
