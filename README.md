@@ -53,7 +53,9 @@ To use the File uploader first we need to Import the Components and we need to p
 #### Props
 
 1. `callback` - we need to pass the function of the file upload to get the file data and details
+   ![Alt text](image-1.png)
 2. `callback 2` - we need to pass the function to handle the upload button (for API calls)
+   ![Alt text](image-3.png)
 
 ### 3. Grid
 
@@ -61,7 +63,7 @@ To use the Grid first we need to Import the Components and we need to pass the P
 
 #### Props
 
-1. `Data set` - we need to pass data that we wanted to be in the grid
+1. `Data set` - we need to pass data that we wanted to be in the grid (it may be image,text,form and etc.)
 
 ### 3. Chart
 
@@ -73,6 +75,7 @@ To use the Chart first we need to Import the Components and we need to pass the 
 2. `Labels` - label will be the name of the x-axis data
 3. `ChartName` - will the name of the chart
 4. `DataSet` - The Dataset will be the value for the chart
+   ![Alt text](image-4.png)
 
 ### `npm test `
 

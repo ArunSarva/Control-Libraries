@@ -122,8 +122,9 @@ function App() {
   };
 
   function handleFileupload() {
-    console.log(fileName, "arun");
+    console.log(fileName, "Uploaded fileName");
   }
+
   return (
     <div className=" text-center">
       Hello Welcome
