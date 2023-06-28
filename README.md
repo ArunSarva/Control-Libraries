@@ -33,7 +33,7 @@ You will also see any lint errors in the console.
 3. `Grid`
 4. `Chart`
 
-##1. Input Fields
+### 1. Input Fields
 
 To use the Input Fields first we need to Import the Components and we need to pass the Props.\
 Props:
@@ -44,7 +44,35 @@ Props:
     passing function as props.\
     ![Alt text](image-2.png)
 2. `type` - we need to pass the TYPE for the field in that we can specify weather it is text,email or password filed
-3. `Name` - name is for the label of the perticular inputfiled
+3. `Name` - name is for the label of the perticular inputfiled.\
+
+### 2. File uploader
+
+To use the File uploader first we need to Import the Components and we need to pass the Props to it.\
+
+#### Props
+
+1. `callback` - we need to pass the function the file upload to get the file data and details.\
+2. `callback 2` - we need to pass the function to handel the upload button (for API calls).\
+
+### 3. Grid
+
+To use the Grid first we need to Import the Components and we need to pass the Props to it.\
+
+#### Props
+
+1. `Data set` - we need to pass data which we wanted to be in grid.\
+
+### 3. Chart
+
+To use the Chart first we need to Import the Components and we need to pass the Props to it.\
+
+#### Props
+
+1. `chartType` - we need to pass Chart type (wether it may be Bar chart,Line chart,Pie chart,Radar chart,).\
+2. `labels` - lable will be the name of x-axis data.\
+3. `chartName` - will the name of the chart.\
+4. `DataSet` - Dataset will be the value for the chart.\
 
 ### `npm test `
 
