@@ -136,11 +136,12 @@ function App() {
       />
       <hr></hr>
       <InputControl
-        type="password"
+        type="text"
         name="First Name"
         callback={(e) => {
           handelchanges(e);
         }}
+        errorMessage="Field Required"
       />
       <div>Entered name :{name}</div>
       <hr></hr>

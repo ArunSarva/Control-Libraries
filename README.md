@@ -45,7 +45,7 @@ Props:
     ![Alt text](image-2.png)
 2. `type` - we need to pass the TYPE for the field in that we can specify whether it is text, email, or password filed
 3. `Name` - the name is for the label of the particular input field
-
+4. `errorMessage` - The errorMessage is for validating the form and to display the customised error message
 ### 2. File uploader
 
 To use the File uploader first we need to Import the Components and we need to pass the Props to it
