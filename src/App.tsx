@@ -110,9 +110,11 @@ function App() {
   const dataSet = [2112, 2343, 2545, 3423, 2365, 1985, 987];
   const [name, setName] = useState("");
   const [fileName, setFileName] = useState("");
+
   function handelchanges(event: any) {
     setName(event.target.value);
   }
+
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       setFileName(e.target.files[0].name);
@@ -120,8 +122,9 @@ function App() {
   };
 
   function handleFileupload() {
-    console.log(fileName, "arun");
+    console.log(fileName, "Uploaded fileName");
   }
+
   return (
     <div className=" text-center">
       Hello Welcome
@@ -133,11 +136,12 @@ function App() {
       />
       <hr></hr>
       <InputControl
-        type="password"
+        type="text"
         name="First Name"
         callback={(e) => {
           handelchanges(e);
         }}
+        errorMessage="Field Required"
       />
       <div>Entered name :{name}</div>
       <hr></hr>

@@ -106,7 +106,6 @@ function GridControler(technologies: any) {
   //     ],
   //   },
   // ];
-  console.log(technologies.technologies, "arun");
   return (
     <>
       <div className="p-10 mb-16">
