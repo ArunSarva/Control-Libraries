@@ -7,14 +7,14 @@ interface props {
 }
 function InputControl(props: props) {
   const { name, callback, type, errorMessage } = props;
-  const [error,setError] = useState(errorMessage)
+  const [error, setError] = useState(errorMessage)
   return (
     <>
       <div className="mb-6 md:justify-start  ">
         <label
           htmlFor="first_name"
           className="mb-2 text-sm font-medium text-gray-600 dark:text-white">
-          {name}
+          {name === "" ? "First Name" : name}
         </label>
         <div className="mb-3 pt-0 justify-start ">
           <input
