@@ -9,16 +9,28 @@ interface props {
 }
 function Charts(props: props) {
   const { chartType, labels, chartName, dataSet } = props;
+  const chartlabels = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday ",
+  ];
+  const localDataSet = [2112, 2343, 2545, 3423, 2365, 1985, 987];
+
+
   useEffect(() => {
     const dataBar = {
-      type: chartType,
+      type: chartType ? "bar" : "bar",
       data: {
-        labels: labels,
+        labels: labels.length === 0 ? chartlabels :labels,
 
         datasets: [
           {
             label: chartName,
-            data: dataSet,
+            data: dataSet.length === 0 ?  localDataSet :dataSet,
           },
         ],
       },
