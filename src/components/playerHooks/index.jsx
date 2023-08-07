@@ -25,7 +25,7 @@ let hoveredSecond;
 
 function videoPlayer(props) {
   const videoElement = useRef(null);
-  const videoRef = useRef(null);
+  const forwordref = useRef(null);
   const [isMetadata, setIsMetaData] = useState(false);
   const [duration, setDuration] = useState(0);
   const secondVideoRef = useRef(null);
@@ -72,7 +72,12 @@ function videoPlayer(props) {
       return `${returnedMinutes}:${returnedSeconds}`;
     }
   };
-
+  const changePlayerCurrentTime = () => {
+    progressRef.current.style.setProperty(
+      "--seek-before-width",
+      `${(progressRef.current.value / duration) * 100}%`
+    );
+  };
   const onSliderHover = (e) => {
     let hoverTime = (
       ((e.clientX - e.target.offsetLeft) / e.target.clientWidth) *
@@ -114,30 +119,28 @@ function videoPlayer(props) {
   const mouseStopped = () => {
     if (!isPlaying) {
       progressRef.current.style.visibility = "visible";
+      forwordref.current.style.visibility = "visible";
     } else {
       progressRef.current.style.visibility = "hidden";
+      forwordref.current.style.visibility = "hidden";
     }
   };
   const onVideoHover = () => {
     clearTimeout(timeout);
     timeout = setTimeout(mouseStopped, 3000);
+    forwordref.current.style.visibility = "visible";
     progressRef.current.style.visibility = "visible";
   };
   const changeRange = () => {
-    console.log((videoElement,"arun pr"));
     videoElement.current.currentTime = progressRef.current.value;
     changePlayerCurrentTime();
   };
   const onMouseLeaveVideo = () => {
+    forwordref.current.style.visibility = "visible";
     progressRef.current.style.visibility = "visible";
   };
 
-  const changePlayerCurrentTime = () => {
-    progressRef.current.style.setProperty(
-      "--seek-before-width",
-      `${(progressRef.current.value / duration) * 100}%`
-    );
-  };
+
   const whilePlaying = () => {
     if (progressRef.current !== null && videoElement.current !== null) {
       progressRef.current.value = videoElement.current?.currentTime;
@@ -149,11 +152,14 @@ function videoPlayer(props) {
     whilePlaying();
     timeout = setTimeout(() => {
       progressRef.current.style.visibility = "hidden";
-    }, 3000);
+      forwordref.current.style.visibility = "hidden";
+    }, 1000);
   };
 
   const onPause = () => {
+    togglePlay()
     clearTimeout(timeout);
+    forwordref.current.style.visibility = "visible";
     progressRef.current.style.visibility = "visible";
     cancelAnimationFrame(animationRef.current);
   };
@@ -166,6 +172,44 @@ function videoPlayer(props) {
       <div className="main">
         <div className="wrapper">
           <div className="videoContainer">
+            <div className="forwordButton text-white" ref={forwordref}>
+              <div
+                onClick={() => {
+                  videoNumber > 0 && handleNextandBackVideo("Back");
+                }}
+              >
+                <FaStepBackward />
+              </div>
+              <div
+                onClick={() => {
+                  handleVideoForwordandbackword("Backward");
+                }}
+              >
+                <FaBackward />
+              </div>
+              <div className="actions">
+                <button onClick={togglePlay}>
+                  {!isPlaying ? <BsPlay /> : <BsPause />}
+                </button>
+              </div>
+              <div
+                onClick={() => {
+                  handleVideoForwordandbackword("Forword");
+                }}
+              >
+                <FaForward />
+              </div>
+              <div
+                onClick={() => {
+                  videoNumber < 2 && handleNextandBackVideo("Next");
+                  videoElement.current.currentTime = null;
+                  progressRef.current.currentTime = null;
+                  changeRange();
+                }}
+              >
+                <FaStepForward />
+              </div>
+            </div>
             <video
               src={videos[videoNumber]}
               ref={videoElement}
@@ -205,45 +249,6 @@ function videoPlayer(props) {
                 <div className="snapshotTime">
                   {calculateTime(hoveredSecond)}
                 </div>
-              </div>
-            </div>
-
-            <div className="forwordButton text-white">
-              <div
-                onClick={() => {
-                  videoNumber > 0 && handleNextandBackVideo("Back");
-                }}
-              >
-                <FaStepBackward />
-              </div>
-              <div
-                onClick={() => {
-                  handleVideoForwordandbackword("Backward");
-                }}
-              >
-                <FaBackward />
-              </div>
-              <div className="actions">
-                <button onClick={togglePlay}>
-                  {!isPlaying ? <BsPlay /> : <BsPause />}
-                </button>
-              </div>
-              <div
-                onClick={() => {
-                  handleVideoForwordandbackword("Forword");
-                }}
-              >
-                <FaForward />
-              </div>
-              <div
-                onClick={() => {
-                  videoNumber < 2 && handleNextandBackVideo("Next");
-                  videoElement.current.currentTime = null;
-                  progressRef.current.currentTime = null;
-                  changeRange();
-                }}
-              >
-                <FaStepForward />
               </div>
             </div>
           </div>
