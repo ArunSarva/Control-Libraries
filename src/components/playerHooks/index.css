@@ -192,7 +192,7 @@ input[type="range"]:hover + .snapshotContainer {
   width: 12px;
   border-radius: 50%;
   border: none;
-  background-color: red;
+  /* background-color: red; */
   cursor: pointer;
   position: relative;
   margin: -4px 0 0 0;
