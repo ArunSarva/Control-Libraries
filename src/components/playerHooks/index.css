@@ -1,15 +1,5 @@
-body {
-  background: #EEEEEE;
-}
-
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-h1 {
-  color: white;
+video::-webkit-media-controls-timeline {
+  visibility: hidden;
 }
 
 .wrapper {
@@ -19,31 +9,23 @@ h1 {
   justify-content: center;
   height: 100vh;
 }
-.video-wrapper {
-  width: 100%;
-  max-width: 700px;
-  position: relative;
+
+.videoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  border-radius: 10px;
-}
-.wrapper:hover .controls {
-  transform: translateY(0%);
+  position: relative;
+  width: 100%;
 }
 
-
-.videoContainer:hover .forwordButton {
-  opacity: 1;  
-}
 .forwordButton{
   display: flex;
   width: 70%;
   flex-direction: row;
   justify-content: space-around;
-  opacity: 0;
+  opacity: 1;
   position: absolute;
-  bottom: 400px;
-  transform: translateY(500%);
-  transition: all 0.3s ease-in-out;
   cursor: pointer;
  z-index: 1000;
 }
@@ -113,7 +95,7 @@ h1 {
   z-index: 1000;
   width: 150px;
   height: 80px;
-  bottom: 40px;
+  bottom: 70px;
   border: 2px solid white;
 }
 
@@ -139,14 +121,15 @@ input[type="range"]:hover + .snapshotContainer {
   --seek-before-color: #ffc2a1;
   --knobby: #3452a5;
   --selectedKnobby: #26c9c3;
-  width: 90%;
+
+  width: 780px;
   cursor: pointer;
   appearance: none;
   background: var(--bar-bg);
   position: relative;
   height: 4px;
   outline: none;
-  bottom: 35px;
+  bottom: 40px;
 }
 
 .amount-progress::-webkit-slider-runnable-track {
@@ -171,15 +154,14 @@ input[type="range"]:hover + .snapshotContainer {
   content: "";
   height: 4px;
   width: var(--seek-before-width);
-  /* width: 80%; */
   background-color: red;
-  display: block;
-  position: relative ;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: 2;
   cursor: pointer;
 }
+
 
 .amount-progress::-moz-range-progress {
   background-color: var(--seek-before-color);
@@ -192,7 +174,7 @@ input[type="range"]:hover + .snapshotContainer {
   width: 12px;
   border-radius: 50%;
   border: none;
-  /* background-color: red; */
+  background-color: red;
   cursor: pointer;
   position: relative;
   margin: -4px 0 0 0;
@@ -201,7 +183,7 @@ input[type="range"]:hover + .snapshotContainer {
 }
 
 .amount-progress:active::-webkit-slider-thumb {
-  transform: scale(1.5);
+  transform: scale(1.2);
   background: white;
 }
 
@@ -217,7 +199,7 @@ input[type="range"]:hover + .snapshotContainer {
   box-sizing: border-box;
 }
 
-/* .amount-progress:active::-moz-range-thumb {
+.amount-progress:active::-moz-range-thumb {
   transform: scale(1.2);
   background: var(--selectedKnobby);
-} */
+}
