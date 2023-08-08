@@ -23,6 +23,7 @@ const useVideoPlayer = (videoElement: any) => {
 
   const handleVideoProgress = (event: { target: { value: any } }) => {
     const manualChange = Number(event.target.value);
+
     videoElement.current.currentTime =
       (videoElement.current.duration / 100) * manualChange;
     setProgress(manualChange);
@@ -34,11 +35,13 @@ const useVideoPlayer = (videoElement: any) => {
     } else {
       manualChange = progress + 10;
     }
+    console.log(videoElement, "arun");
     videoElement.current.currentTime =
       (videoElement.current.duration / 100) * manualChange;
     setProgress(manualChange);
   };
   const handleNextandBackVideo = (prop: string) => {
+   videoElement.current.value = "";
     setProgress(0);
     setIsPlaying(false);
     if (prop === "Next") {

@@ -157,7 +157,6 @@ function videoPlayer(props) {
   };
 
   const onPause = () => {
-    togglePlay()
     clearTimeout(timeout);
     forwordref.current.style.visibility = "visible";
     progressRef.current.style.visibility = "visible";
