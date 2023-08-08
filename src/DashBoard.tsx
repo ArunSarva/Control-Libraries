@@ -6,7 +6,9 @@ import InputControl from "./components/inputControl/InputControl";
 import FileUploader from "./components/FileUploader";
 import Table from "./components/table";
 import VideoPlayer from "./components/playerHooks/index";
+import type { IData } from "./components/chart/types";
 import * as d3 from "d3";
+import { BarChart } from "./components/chart/D3jsChart";
 function App() {
   const technologies = [
     {
@@ -114,7 +116,7 @@ function App() {
   const [name, setName] = useState("");
   const [fileName, setFileName] = useState("");
 
-  function handelchanges(event: any) {
+  function handlechanges(event: any) {
     setName(event.target.value);
   }
 
@@ -152,12 +154,19 @@ function App() {
     const [x, y] = d3.pointer(event);
     setData(data.slice(-200).concat(Math.atan2(x, y)));
   }
-
+  const BAR_CHART_DATA: IData[] = [
+    { label: "Apples", value: 100 },
+    { label: "Bananas", value: 200 },
+    { label: "Oranges", value: 50 },
+    { label: "Kiwis", value: 150 },
+  ];
   return (
     <div className=" text-center" onMouseMove={onMouseMove}>
-      <VideoPlayer />
       <div>
+        <VideoPlayer />
       </div>
+
+      <hr></hr>
       <div>
         <h1>Table</h1>
         <Table
@@ -169,6 +178,11 @@ function App() {
         />
       </div>
 
+      <hr></hr>
+      <div>
+        <h2>Bar chart</h2>
+        <BarChart data={BAR_CHART_DATA} />
+      </div>
       <hr></hr>
       <div>
         <h1 className="text-black">Chart</h1>
@@ -183,10 +197,10 @@ function App() {
       <div>
         <h1>Input controler</h1>
         <InputControl
-          type="password"
+          type="text"
           name="First Name"
           callback={(e) => {
-            handelchanges(e);
+            handlechanges(e);
           }}
           errorMessage="Field Required"
         />
