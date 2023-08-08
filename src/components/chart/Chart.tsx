@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import { Chart, initTE } from "tw-elements";
 initTE({ Chart });
@@ -20,25 +21,23 @@ function Charts(props: props) {
   ];
   const localDataSet = [2112, 2343, 2545, 3423, 2365, 1985, 987];
 
-
   useEffect(() => {
     const dataBar = {
-      type: chartType ? "bar" : "bar",
+      type: chartType ? chartType : "bar",
       data: {
-        labels: labels.length === 0 ? chartlabels :labels,
+        labels: labels.length === 0 ? chartlabels : labels,
 
         datasets: [
           {
             label: chartName,
-            data: dataSet.length === 0 ?  localDataSet :dataSet,
+            data: dataSet.length === 0 ? localDataSet : dataSet,
           },
         ],
       },
     };
 
     new Chart(document.getElementById("chart"), dataBar);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chartType]);
+  }, [chartName]);
 
   return (
     <div className="mx-auto w-3/5 overflow-hidden">

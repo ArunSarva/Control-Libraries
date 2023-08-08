@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useRef, useEffect, useState } from "react";
-import video1 from "../../assets/video_1.mp4";
-import video2 from "../../assets/video_2.mp4";
-import video3 from "../../assets/video_3.mp4";
+import video1 from "../../assets/CinematicBackground.mp4";
+import video2 from "../../assets/video_1.mp4";
+import video3 from "../../assets/video_2.mp4";
+import video4 from "../../assets/video_3.mp4";
 import useVideoPlayer from "./useVideoPlayer";
 import "./index.css";
 import {
@@ -12,7 +13,6 @@ import {
   BsFillVolumeMuteFill,
   BsFillVolumeUpFill,
 } from "react-icons/bs";
-
 import {
   FaBackward,
   FaForward,
@@ -25,20 +25,20 @@ let hoveredSecond;
 
 function videoPlayer(props) {
   const videoElement = useRef(null);
+  const duplicateRangeref = useRef(null);
   const forwordref = useRef(null);
   const [isMetadata, setIsMetaData] = useState(false);
   const [duration, setDuration] = useState(0);
   const secondVideoRef = useRef(null);
   const progressRef = useRef(null);
   const snapshotRef = useRef(null);
+  const volumeRef = useRef(null);
   const animationRef = useRef();
   const [snapshots, setSnapshots] = useState("");
-  // const [hoveredSecond, setHoveredSecond] = useState("");
-  const videos = [video1, video2, video3];
+  const videos = [video1, video2, video3, video4];
   const {
     isMuted,
     isPlaying,
-    progress,
     speed,
     togglePlay,
     videoNumber,
@@ -50,6 +50,13 @@ function videoPlayer(props) {
     handleNextandBackVideo,
   } = useVideoPlayer(videoElement);
 
+  const resetstate = () => {
+    videoElement.current.value = null;
+    setIsMetaData(false);
+    setDuration(0);
+    secondVideoRef.current.value = null;
+    progressRef.current.value = null;
+  };
   useEffect(() => {
     const seconds = videoElement.current.duration;
     setDuration(seconds);
@@ -120,15 +127,18 @@ function videoPlayer(props) {
     if (!isPlaying) {
       progressRef.current.style.visibility = "visible";
       forwordref.current.style.visibility = "visible";
+      duplicateRangeref.current.style.visibility = "visible";
     } else {
       progressRef.current.style.visibility = "hidden";
       forwordref.current.style.visibility = "hidden";
+      duplicateRangeref.current.style.visibility = "hidden";
     }
   };
   const onVideoHover = () => {
     clearTimeout(timeout);
     timeout = setTimeout(mouseStopped, 3000);
     forwordref.current.style.visibility = "visible";
+    duplicateRangeref.current.style.visibility = "visible";
     progressRef.current.style.visibility = "visible";
   };
   const changeRange = () => {
@@ -138,8 +148,8 @@ function videoPlayer(props) {
   const onMouseLeaveVideo = () => {
     forwordref.current.style.visibility = "visible";
     progressRef.current.style.visibility = "visible";
+    duplicateRangeref.current.style.visibility = "visible";
   };
-
 
   const whilePlaying = () => {
     if (progressRef.current !== null && videoElement.current !== null) {
@@ -153,28 +163,40 @@ function videoPlayer(props) {
     timeout = setTimeout(() => {
       progressRef.current.style.visibility = "hidden";
       forwordref.current.style.visibility = "hidden";
-    }, 1000);
+      duplicateRangeref.current.style.visibility = "hidden";
+    }, 3000);
   };
 
   const onPause = () => {
     clearTimeout(timeout);
     forwordref.current.style.visibility = "visible";
     progressRef.current.style.visibility = "visible";
+    duplicateRangeref.current.style.visibility = "visible";
     cancelAnimationFrame(animationRef.current);
   };
   const handleVideoProgressLocal = (event) => {
     handleVideoProgress(event);
     changeRange();
   };
+
+  const handleVolumeChange = () => {
+    videoElement.current.volume = volumeRef.current.value / 100;
+  };
+
   return (
     <>
       <div className="main">
         <div className="wrapper">
           <div className="videoContainer">
             <div className="forwordButton text-white" ref={forwordref}>
+              <div>
+                {calculateTime(videoElement?.current?.currentTime)}/
+                {calculateTime(duration)}
+              </div>
               <div
                 onClick={() => {
                   videoNumber > 0 && handleNextandBackVideo("Back");
+                  resetstate();
                 }}
               >
                 <FaStepBackward />
@@ -201,12 +223,40 @@ function videoPlayer(props) {
               <div
                 onClick={() => {
                   videoNumber < 2 && handleNextandBackVideo("Next");
-                  videoElement.current.currentTime = null;
-                  progressRef.current.currentTime = null;
-                  changeRange();
+                  resetstate();
                 }}
               >
                 <FaStepForward />
+              </div>
+              <div className="flex flex-row">
+                <lable className="text-sm">speed</lable>
+                <select
+                  className="velocity"
+                  value={speed}
+                  onChange={(e) => handleVideoSpeed(e)}
+                >
+                  <option value="0.50">0.50x</option>
+                  <option value="1">1x</option>
+                  <option value="1.25">1.25x</option>
+                  <option value="2">2x</option>
+                </select>
+              </div>
+              <div></div>
+              <div className="volumeContainer flex justify-between">
+                <button className="mute-btn" onClick={toggleMute}>
+                  {!isMuted ? <BsFillVolumeUpFill /> : <BsFillVolumeMuteFill />}
+                </button>
+                <div className="volumeControlContainer">
+                  <input
+                    className="volumeControl"
+                    type="range"
+                    onChange={() => {
+                      handleVolumeChange();
+                    }}
+                    ref={volumeRef}
+                    min={0}
+                  ></input>
+                </div>
               </div>
             </div>
             <video
@@ -236,6 +286,7 @@ function videoPlayer(props) {
                 step="any"
                 ref={progressRef}
                 min={0}
+                max={1}
                 onMouseMove={onSliderHover}
                 onMouseOut={onOutsideSlider}
                 onChange={(e) => {
@@ -250,6 +301,8 @@ function videoPlayer(props) {
                 </div>
               </div>
             </div>
+
+            <div ref={duplicateRangeref} className="duplicateRange"></div>
           </div>
         </div>
 
