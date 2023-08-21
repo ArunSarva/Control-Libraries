@@ -1,0 +1,80 @@
+.imagecontainer{
+    width:100%;
+    border:none
+}
+
+.imageHolder{    
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.imagecontainer:focus {
+    outline: none;
+}
+
+.imagecontainer img{border:0;outline: none;}
+.imagecontroller{
+    display: flex;
+    width: 20%;
+    justify-content: space-evenly;
+    position: absolute;
+    bottom: 0;
+    left: 40%;
+    background: rgb(135 132 132 / 25%);
+    box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.imageSkipController{
+    display: flex;
+    width: 50%;
+    justify-content: space-evenly;
+    position: absolute;
+    bottom: 100px;
+}
+.controller{
+  width: 40px;
+    height: 40px;
+    padding: 10px;
+    color: #ffffff;
+}
+.controllerDiv :hover{
+  color: #000;
+  font-weight: bolder;
+  background: rgb(135 132 132 / 50%);
+    box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 25px;
+    border: 1px solid rgba(238, 229, 229, 0.18);
+}
+
+.modelCloseButton{
+  float: right;
+  margin-top: 1%;
+  margin-right: 3%;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 5px;
+}
+.modelCloseButton:hover {
+  color: #ff0000;
+  background: rgb(135 132 132 / 50%);
+  box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 25px;
+  border: 1px solid rgba(238, 229, 229, 0.18);
+}
+.closeButton{
+  width: 30px;
+  height: 10%;
+}
+
+.imagelist{
+  width: 80%;
+  height: 80%;
+}
