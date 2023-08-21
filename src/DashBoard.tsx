@@ -167,11 +167,11 @@ function App() {
   const DropdownOptions = [10, 20, 30, 40];
   return (
     <div className=" text-center" onMouseMove={onMouseMove}>
-      <div>
+      <div className="flex justify-center">
         <AudioPlayer />
       </div>
       <hr></hr>
-      <div>
+      <div className="flex justify-center">
         <ImageGallery />
       </div>
       <hr></hr>
