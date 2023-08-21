@@ -9,6 +9,9 @@ import VideoPlayer from "./components/playerHooks/index";
 import type { IData } from "./components/chart/types";
 import * as d3 from "d3";
 import { BarChart } from "./components/chart/D3jsChart";
+import DropDown from "./components/dropdown";
+import ImageGallery from "./components/imageGallery";
+import AudioPlayer from "./components/audioPlayer";
 function App() {
   const technologies = [
     {
@@ -160,8 +163,22 @@ function App() {
     { label: "Oranges", value: 50 },
     { label: "Kiwis", value: 150 },
   ];
+
+  const DropdownOptions = [10, 20, 30, 40];
   return (
     <div className=" text-center" onMouseMove={onMouseMove}>
+      <div className="flex justify-center">
+        <AudioPlayer />
+      </div>
+      <hr></hr>
+      <div className="flex justify-center">
+        <ImageGallery />
+      </div>
+      <hr></hr>
+      <div>
+        <DropDown label={"Amount"} options={DropdownOptions} />
+      </div>
+      <hr></hr>
       <div>
         <VideoPlayer />
       </div>
