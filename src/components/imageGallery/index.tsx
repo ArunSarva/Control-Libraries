@@ -9,8 +9,6 @@ export default function StandardImageList() {
   const [title, setTitle] = React.useState("");
 
   function showPopUpImage(item: any) {
-    console.log(itemData[item], "arun");
-
     setImg(item);
     setShow(!show);
   }

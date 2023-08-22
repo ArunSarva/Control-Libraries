@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.componentsHeading{
+    background-color: rgba(158, 178, 197, 0.493);
+    width: 80%;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 20px auto;
+}

@@ -1,32 +1,39 @@
-import React, { useState, useEffect } from "react";
-// import { Select, Option } from "@material-tailwind/react";
-function DropDown(props: any) {
-  const {} = props;
-  const [showOption, setShowOption] = useState(false);
+import * as React from "react";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 
-  useEffect(() => {
-    return () => {};
-  }, []);
-
-  return (
-    <>
-      <div className="flex flex-col w">
-        <div
-          className="text-black cursor-pointer bg-blue-100 hover:bg-blue-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          onClick={() => {
-            setShowOption(!showOption);
-          }}
-        >
-          :
-        </div>
-        {showOption && (
-          <span className="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-            show details
-          </span>
-        )}
-      </div>
-    </>
-  );
+interface props {
+  label: string;
+  options: number[] | string[];
 }
 
-export default DropDown;
+export default function DropDown(props: props) {
+  const { label, options } = props;
+  const [age, setAge] = React.useState("");
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setAge(event.target.value as string);
+  };
+
+  return (
+    <Box sx={{ minWidth: 120 }}>
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Age</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={age}
+          label={label}
+          onChange={handleChange}
+        >
+          {options.map((option) => {
+            return <MenuItem value={option}>{option}</MenuItem>;
+          })}
+        </Select>
+      </FormControl>
+    </Box>
+  );
+}
