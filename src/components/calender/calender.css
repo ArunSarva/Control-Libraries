@@ -1,0 +1,206 @@
+.calender-holder {
+
+    min-width: 325px;
+    max-width: 325px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    padding: 15px 15px 18px 15px;
+    background-color: #FFFFFF;
+  }
+  
+  .flex-header {
+    display: flex;
+    min-width: 294px;
+    max-width: 294px;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  
+  .flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .day {
+    font-weight: 700;
+    width: 42px;
+    font-size: 14px;
+    color: #808080;
+    margin: 0px 0px 8px 0;
+  }
+  
+  .date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 42px !important;
+    color: #ADADAD;
+    font-weight: 600;
+    font-size: 14px;
+    height: 30px;
+  }
+  
+  .date-inner {
+    cursor: pointer;
+  }
+  
+  .date-corner {
+    color: #47A5C8;
+  }
+  
+  .date-current {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 70px;
+    background-color: #47A5C8;
+    color: white;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+  
+  .date:hover{
+    background-color: #2e759138;
+    border-radius: 50px;
+    color:#3d4450
+  }
+  .display-blur {
+    pointer-events: none;
+    opacity: 0.4;
+    cursor: not-allowed !important;
+  }
+  
+  .from-to-holder {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .from-date-picker {
+    font-size: 12px;
+    padding: 0px 8px;
+    margin-bottom: 10px;
+    margin-left: 8px;
+    cursor: pointer;
+    height: 30px;
+  }
+  
+  .picker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    font-weight: 600;
+    min-width: 80px;
+    border: 1px solid #47A5C8;
+    color: #3C4450;
+  }
+  
+  .picker-current {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    background-color: #47A5C8;
+    color: white;
+    font-weight: 600;
+    min-width: 80px;
+    border: 1px solid #47A5C8;
+  }
+  
+  .picker-divider {
+    margin: -15px 0px 0px 8px;
+  }
+  
+  .chevron-holder {
+    min-width: 30px;
+    max-width: 300px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 30px;
+    margin-top: -8px;
+  }
+    .chevron-year-holder {
+    min-width: 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 30px;
+    margin-left: 8px;
+    margin-top: -8px;
+  }
+  .c-iconleft {
+    font-size: 12px;
+    width: 18px;
+    height: 18px;
+    border-radius: 70px;
+    text-align: center;
+    padding-right: 1px;
+    margin-right: 9px;
+    margin-top: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+  }
+
+  .c-iconright {
+    font-size: 12px;
+    width: 18px;
+    height: 18px;
+    border-radius: 70px;
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 6px;
+    padding-left: 1px;
+    margin-right: 9px;
+    cursor: pointer;
+  }
+  
+  .border-bottom-calender {
+    width: 93%;
+    margin: 25px auto 15px auto;
+    border-bottom: 1px solid #d5d5d5;
+  }
+  
+  .controller {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 96%;
+    font-size: 14px;
+    font-weight: 600;
+    color: #3d4450;
+  }
+  
+  .controller-apply {
+    color: #2e7f9e;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+  
+  .controller-cancel {
+    cursor: pointer;
+  }
+
+  .leftKey{
+    width: 30px;
+    height: 30px;
+  }
+
+  .leftKey:hover{
+    background-color: #5a5f663f;
+    border-radius: 25px;
+  }
+
+  .rightKey{
+    width: 30px;
+    height: 30px;
+  }
+  .rightKey:hover{
+    background-color: #5a5f663f;
+    border-radius: 25px;
+  }

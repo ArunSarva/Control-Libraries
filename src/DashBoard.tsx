@@ -12,6 +12,10 @@ import { BarChart } from "./components/chart/D3jsChart";
 import DropDown from "./components/dropdown";
 import ImageGallery from "./components/imageGallery";
 import AudioPlayer from "./components/audioPlayer";
+import Calender from "./components/calender";
+import RadioButtonsGroup from "./components/radioButton";
+import Modal from "../src/components/modal";
+
 function App() {
   const technologies = [
     {
@@ -119,6 +123,8 @@ function App() {
   const [name, setName] = useState("");
   const [fileName, setFileName] = useState("");
 
+  const [showModal, setShowModal] = React.useState(false);
+  const [selectedDate, setSelectedDate] = useState("");
   function handlechanges(event: any) {
     setName(event.target.value);
   }
@@ -126,6 +132,7 @@ function App() {
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       setFileName(e.target.files[0].name);
+      console.log(e.target.files);
     }
   };
 
@@ -165,25 +172,87 @@ function App() {
   ];
 
   const DropdownOptions = [10, 20, 30, 40];
+
+  const getAcademicCalendar = {
+    from: {
+      date: new Date().getDate(),
+      month: new Date().getMonth() + 1,
+      year: new Date().getFullYear(),
+    },
+    to: {
+      date: new Date().getDate(),
+      month: new Date().getMonth() + 1,
+      year: new Date().getFullYear(),
+    },
+  };
+
+  function getTheTime(event: { target: { value: any } }) {
+    setSelectedDate(event.target.value.date);
+    setShowModal(true);
+    console.log(event.target.value);
+  }
+  const gender = ["Female", "male", "others"];
+
+  function modalBody() {
+    return (
+      <>
+        <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+          {/*header*/}
+          <div className="flex items-start justify-between p-4 border-b border-solid border-slate-200 rounded-t">
+            <h3 className="text-3xl font-semibold">Details</h3>
+            <button
+              className="p-1 ml-auto bg-transparent border-0 text-black opacity-25 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+              onClick={() => setShowModal(false)}
+            >
+              x
+            </button>
+          </div>
+          <div className="relative p-6 flex-auto">{selectedDate}</div>
+        </div>
+      </>
+    );
+  }
   return (
     <div className=" text-center" onMouseMove={onMouseMove}>
+      <h1 className="componentsHeading">Radio Button</h1>
+      <div className="flex justify-center">
+        <RadioButtonsGroup label="gender" options={gender} />
+      </div>
+      <hr></hr>
+
+      <h1 className="componentsHeading">Calender</h1>
+      <div className="flex justify-center">
+        <Calender
+          callback={(e: any) => {
+            getTheTime(e);
+          }}
+          calender={getAcademicCalendar}
+          disableCurrentDate={true}
+        />
+      </div>
+      <hr></hr>
+      <h1 className="componentsHeading"> Audio Player</h1>
       <div className="flex justify-center">
         <AudioPlayer />
       </div>
       <hr></hr>
+      <h1 className="componentsHeading">Image Gallery</h1>
       <div className="flex justify-center">
         <ImageGallery />
       </div>
       <hr></hr>
-      <div>
+      <h1 className="componentsHeading">DropDown Button</h1>
+      <div className="flex justify-center">
         <DropDown label={"Amount"} options={DropdownOptions} />
       </div>
       <hr></hr>
+      <h1 className="componentsHeading">Video Player</h1>
       <div>
         <VideoPlayer />
       </div>
 
       <hr></hr>
+      <h1 className="componentsHeading">Table</h1>
       <div>
         <h1>Table</h1>
         <Table
@@ -196,11 +265,13 @@ function App() {
       </div>
 
       <hr></hr>
+      <h1 className="componentsHeading">Barchart D3-js</h1>
       <div>
         <h2>Bar chart</h2>
         <BarChart data={BAR_CHART_DATA} />
       </div>
       <hr></hr>
+      <h1 className="componentsHeading">Barchart Tailwind css</h1>
       <div>
         <h1 className="text-black">Chart</h1>
         <Charts
@@ -211,8 +282,8 @@ function App() {
         />
       </div>
       <hr></hr>
+      <h1 className="componentsHeading">Input Controler</h1>
       <div>
-        <h1>Input controler</h1>
         <InputControl
           type="text"
           name="First Name"
@@ -224,8 +295,8 @@ function App() {
         <div>Entered name :{name}</div>
       </div>
       <hr></hr>
+      <h1 className="componentsHeading">File Uploader</h1>
       <div>
-        <h1>File Uploader</h1>
         <FileUploader
           callback={(e) => {
             handleFileChange(e);
@@ -235,10 +306,13 @@ function App() {
         <div>Uploaded file name : {fileName}</div>
       </div>
       <hr></hr>
+      <h1 className="componentsHeading">Grid Controler</h1>
       <div>
         <h1>Grid</h1>
         <GridControler technologies={technologies} />
       </div>
+      <hr></hr>
+      <Modal showModal={showModal} children={modalBody()} />
     </div>
   );
 }
