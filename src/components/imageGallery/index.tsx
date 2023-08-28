@@ -1,6 +1,4 @@
 import * as React from "react";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
 import Popup from "./Popup";
 import "./popup.css";
 export default function StandardImageList() {
@@ -14,7 +12,21 @@ export default function StandardImageList() {
   }
   return (
     <>
-      <ImageList
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-1">
+        {itemData.map((item, index) => (
+          <img
+            onClick={() => {
+              showPopUpImage(index);
+            }}
+            className="flex"
+            src={`${item.img}`}
+            srcSet={`${item.img}`}
+            alt={item.title}
+            loading="lazy"
+          />
+        ))}
+      </div>
+      {/* <ImageList
         className="imagelist"
         // sx={{ width: 500, height: 450 }}
         cols={3}
@@ -33,7 +45,7 @@ export default function StandardImageList() {
             />
           </ImageListItem>
         ))}
-      </ImageList>
+      </ImageList> */}
       <Popup
         show={show}
         img={img}
