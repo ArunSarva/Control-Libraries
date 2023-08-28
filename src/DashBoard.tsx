@@ -237,7 +237,7 @@ function App() {
       </div>
       <hr></hr>
       <h1 className="componentsHeading">Image Gallery</h1>
-      <div className="flex justify-center">
+      <div className="flex justify-center w-4/5 ml-auto mr-auto">
         <ImageGallery />
       </div>
       <hr></hr>
