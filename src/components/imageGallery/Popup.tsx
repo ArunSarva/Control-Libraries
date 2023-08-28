@@ -40,8 +40,8 @@ export default function BasicModal(props: any) {
             className="imageHolder"
             ref={imageRef}
             width={`${height}%`}
-            src={`${imageList[imageIndex]?.img}?w=164&h=164&fit=crop&auto=format`}
-            srcSet={`${imageList[imageIndex]?.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+            src={`${imageList[imageIndex]?.img}`}
+            srcSet={`${imageList[imageIndex]?.img}`}
             alt={title}
             loading="lazy"
           />
@@ -53,7 +53,7 @@ export default function BasicModal(props: any) {
                 setHeight(50);
               }}
             >
-              <MdOutlineArrowBackIosNew className="controller" />
+              <MdOutlineArrowBackIosNew className="imageControlButton" />
             </div>
 
             <div
@@ -63,7 +63,7 @@ export default function BasicModal(props: any) {
                 console.log(imageRef, "arun");
               }}
             >
-              <RxZoomOut className="controller" />
+              <RxZoomOut className="imageControlButton" />
             </div>
             <div
               className="controllerDiv"
@@ -72,7 +72,7 @@ export default function BasicModal(props: any) {
                 console.log(imageRef, "arun");
               }}
             >
-              <RxZoomIn className="controller" />
+              <RxZoomIn className="imageControlButton" />
             </div>
             <div
               className="controllerDiv"
@@ -82,7 +82,7 @@ export default function BasicModal(props: any) {
                 setHeight(50);
               }}
             >
-              <MdOutlineNavigateNext className="controller" />
+              <MdOutlineNavigateNext className="imageControlButton" />
             </div>
           </div>
         </Box>
