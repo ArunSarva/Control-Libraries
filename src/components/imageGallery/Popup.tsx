@@ -17,6 +17,7 @@ export default function BasicModal(props: any) {
 
   const [imageIndex, setimageIndex] = React.useState(0);
   useEffect(() => {
+    setHeight(50);
     setimageIndex(img);
   }, [img]);
   const style = {

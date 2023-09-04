@@ -1,6 +1,10 @@
 .imagecontainer{
     width:100%;
-    border:none
+    height: 100%;
+    overflow: auto;
+    border:none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .imageHolder{    
@@ -53,6 +57,8 @@
 }
 
 .modelCloseButton{
+  position: fixed;
+  right: 0;
   float: right;
   margin-top: 1%;
   margin-right: 3%;
