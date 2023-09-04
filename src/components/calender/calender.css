@@ -60,11 +60,20 @@
     height: 30px;
     cursor: pointer;
   }
+
+  .date-current:hover{
+    background-color: #47A5C8;
+  }
   
-  .date:hover{
+  .date-inner:hover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #2e759138;
     border-radius: 50px;
-    color:#3d4450
+    color:#3d4450;
+    width: 30px;
+    height: 30px;
   }
   .display-blur {
     pointer-events: none;
