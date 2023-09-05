@@ -2,7 +2,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
 import Modal from "../modal";
-import { CiMenuKebab } from "react-icons/ci";
+import { SlOptionsVertical } from "react-icons/sl";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 
 function Table(props: {
   rowdata: any;
@@ -20,7 +23,14 @@ function Table(props: {
   const [localCheckBox, setLocalcheckBox] = useState(false);
   const [showModal, setShowModal] = React.useState(false);
   const [modalData, setmodalData] = useState({});
-
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   const [showOption, setShowOption] = useState(false);
   useEffect(() => {
     setcoloumData(coloumName.length === 0 ? loaclColoumNames : coloumName);
@@ -281,39 +291,46 @@ function Table(props: {
                         <td key={index} className="px-6 py-4">
                           {key === "action" ? (
                             <div className="flex flex-col w">
-                              <div
-                                className="w-1  text-black cursor-pointer bg-blue-100 hover:bg-blue-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                onClick={() => {
-                                  setShowOption(!showOption);
-                                }}
-                              >
-                                Active
+                              <div>
+                                <Button
+                                  id="composition-menu"
+                                  aria-controls={
+                                    open ? "demo-positioned-menu" : undefined
+                                  }
+                                  aria-haspopup="true"
+                                  aria-expanded={open ? "true" : undefined}
+                                  onClick={handleMenuClick}
+                                >
+                                  <SlOptionsVertical />
+                                </Button>
+                                <Menu
+                                  id="composition-menu"
+                                  aria-labelledby="composition-menu"
+                                  anchorEl={anchorEl}
+                                  open={open}
+                                  onClose={handleClose}
+                                  anchorOrigin={{
+                                    vertical: "top",
+                                    horizontal: "left",
+                                  }}
+                                  transformOrigin={{
+                                    vertical: "top",
+                                    horizontal: "left",
+                                  }}
+                                >
+                                  <MenuItem
+                                    onClick={() => {
+                                      handleClose();
+                                      setmodalData(row);
+                                      setShowModal(true);
+                                    }}
+                                  >
+                                    Show Details
+                                  </MenuItem>
+                                </Menu>
                               </div>
-                              {/* {!showOption && (
-                                // <span
-                                //   // className="z-50 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                                //   onClick={() => {
-                                //     setShowModal(true);
-                                //   }}
-                                // >
-                                //   show details
-                                // </span>
-                                <select>
-                                  <option>arun</option>
-                                </select>
-                              )} */}
                             </div>
                           ) : (
-                            // <a
-                            //   onClick={() => {
-                            //     setShowModal(true);
-                            //     setmodalData(row);
-                            //     console.log(row, "arun");
-                            //   }}
-                            //   className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                            // >
-                            //   <CiMenuKebab />
-                            // </a>
                             <div>{row[key]}</div>
                           )}
                         </td>
