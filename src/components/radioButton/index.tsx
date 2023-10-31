@@ -21,9 +21,14 @@ export default function RadioButtonsGroup(props: props) {
         defaultValue="male"
         name="radio-buttons-group"
       >
-        {options.map((items) => {
+        {options.map((items, index) => {
           return (
-            <FormControlLabel value={items} control={<Radio />} label={items} />
+            <FormControlLabel
+              key={index}
+              value={items}
+              control={<Radio />}
+              label={items}
+            />
           );
         })}
       </RadioGroup>

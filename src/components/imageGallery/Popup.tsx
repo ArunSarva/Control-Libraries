@@ -61,7 +61,6 @@ export default function BasicModal(props: any) {
               className="controllerDiv"
               onClick={() => {
                 height > 10 && setHeight(height - 10);
-                console.log(imageRef, "arun");
               }}
             >
               <RxZoomOut className="imageControlButton" />
@@ -70,7 +69,6 @@ export default function BasicModal(props: any) {
               className="controllerDiv"
               onClick={() => {
                 height < 100 && setHeight(height + 10);
-                console.log(imageRef, "arun");
               }}
             >
               <RxZoomIn className="imageControlButton" />

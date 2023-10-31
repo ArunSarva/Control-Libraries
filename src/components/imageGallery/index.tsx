@@ -4,7 +4,6 @@ import "./popup.css";
 export default function StandardImageList() {
   const [show, setShow] = React.useState(false);
   const [img, setImg] = React.useState("");
-  const [title, setTitle] = React.useState("");
 
   function showPopUpImage(item: any) {
     setImg(item);
@@ -18,6 +17,7 @@ export default function StandardImageList() {
             onClick={() => {
               showPopUpImage(index);
             }}
+            key={index}
             className="flex"
             src={`${item.img}`}
             srcSet={`${item.img}`}
@@ -46,13 +46,7 @@ export default function StandardImageList() {
           </ImageListItem>
         ))}
       </ImageList> */}
-      <Popup
-        show={show}
-        img={img}
-        title={title}
-        imageList={itemData}
-        setshow={setShow}
-      />
+      <Popup show={show} img={img} imageList={itemData} setshow={setShow} />
     </>
   );
 }

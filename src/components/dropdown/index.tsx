@@ -29,8 +29,12 @@ export default function DropDown(props: props) {
           label={label}
           onChange={handleChange}
         >
-          {options.map((option) => {
-            return <MenuItem value={option}>{option}</MenuItem>;
+          {options.map((option, index) => {
+            return (
+              <MenuItem key={index} value={option}>
+                {option}
+              </MenuItem>
+            );
           })}
         </Select>
       </FormControl>
