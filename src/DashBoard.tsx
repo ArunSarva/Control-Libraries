@@ -140,20 +140,13 @@ function App() {
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      getfilePath(e.target.files);
-      // setFileName(e.target.files[0].path);
-      // setPdfFileName(e.target.files[0]);
+      setFileName(e.target.files[0].name);
       setPdfFileName(URL.createObjectURL(e.target.files[0]));
       console.log(URL.createObjectURL(e.target.files[0]), "jj");
     }
   };
-  const getfilePath = (sample: any) => {
-    let abc = document.getElementById(sample);
-    console.log(sample, "arun");
-  };
-
   function handleFileupload() {
-    // setPdfFileName(fileName);
+    setPdfFileName(fileName);
     console.log(fileName, "Uploaded fileName");
   }
   const tableData = [
@@ -228,12 +221,27 @@ function App() {
     <div className=" text-center" onMouseMove={onMouseMove}>
       <div>
         <h1 className="componentsHeading">PDF</h1>
-        <iframe
-          src={PdffileName}
-          // src=""
-          width={PdffileName && "100%"}
-          height={PdffileName && "500px"}
-        />
+        <span>
+          {PdffileName ? (
+            <iframe
+              src={PdffileName}
+              // src=""
+              width={PdffileName && "100%"}
+              height={PdffileName && "500px"}
+            />
+          ) : (
+            <div>
+              <FileUploader
+                callback={(e) => {
+                  handleFileChange(e);
+                }}
+                handleUpload={handleFileupload}
+                name={""}
+                showUpload={false}
+              />
+            </div>
+          )}
+        </span>
       </div>
       <h1 className="componentsHeading">File Uploader</h1>
       <div>
@@ -242,6 +250,8 @@ function App() {
             handleFileChange(e);
           }}
           handleUpload={handleFileupload}
+          name={"File Upload"}
+          showUpload={true}
         />
         <div>Uploaded file name : {fileName}</div>
       </div>

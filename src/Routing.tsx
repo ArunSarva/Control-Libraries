@@ -18,7 +18,12 @@ function Routing() {
           <Route
             path="/fileupload"
             element={
-              <FileUploader callback={() => {}} handleUpload={() => {}} />
+              <FileUploader
+                callback={() => {}}
+                handleUpload={() => {}}
+                name="File Upload"
+                showUpload={true}
+              />
             }
           />
           <Route path="/grid" element={<GridControler />} />
