@@ -23,6 +23,8 @@ import video4 from "../src/assets/video_3.mp4";
 import Game from "../src/components/game/index";
 import ToggleSwitch from "./components/toggleswitch/ToggleSwitch";
 import SearchBar from "./components/searchBox/searchBar";
+import { FaWindowClose } from "react-icons/fa";
+
 function App() {
   const technologies = [
     {
@@ -220,15 +222,26 @@ function App() {
   return (
     <div className=" text-center" onMouseMove={onMouseMove}>
       <div>
-        <h1 className="componentsHeading">PDF</h1>
+        <h1 className="componentsHeading">Document Viewer</h1>
         <span>
           {PdffileName ? (
-            <iframe
-              src={PdffileName}
-              // src=""
-              width={PdffileName && "100%"}
-              height={PdffileName && "500px"}
-            />
+            <div>
+              <div className=" bg-[#323639] text-[#ffffff] flex justify-end ">
+                <div
+                  onClick={() => {
+                    setPdfFileName("");
+                  }}
+                >
+                  <FaWindowClose />
+                </div>
+              </div>
+              <iframe
+                src={PdffileName}
+                // src=""
+                width={PdffileName && "100%"}
+                height={PdffileName && "500px"}
+              />
+            </div>
           ) : (
             <div>
               <FileUploader
