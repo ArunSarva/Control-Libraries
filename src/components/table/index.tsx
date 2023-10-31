@@ -31,7 +31,7 @@ function Table(props: {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const [showOption, setShowOption] = useState(false);
+  // const [showOption, setShowOption] = useState(false);
   useEffect(() => {
     setcoloumData(coloumName.length === 0 ? loaclColoumNames : coloumName);
     setTableData(rowdata.length === 0 ? localTableData : rowdata);
@@ -269,7 +269,7 @@ function Table(props: {
                             id="checkbox-table-3"
                             type="checkbox"
                             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            checked={isItemSelected}
+                            // checked={isItemSelected}
                             onClick={(e) => {
                               handleClick(
                                 row[localCheckBoxKey] as string,

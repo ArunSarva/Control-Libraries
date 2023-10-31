@@ -1,6 +1,10 @@
-/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react-hooks/rules-of-hooks */
+
 import React, { useRef, useEffect, useState } from "react";
+// import video1 from "../../assets/CinematicBackground.mp4";
+// import video2 from "../../assets/video_1.mp4";
+// import video3 from "../../assets/video_2.mp4";
+// import video4 from "../../assets/video_3.mp4";
 import useVideoPlayer from "./useVideoPlayer";
 import "./index.css";
 import {
@@ -20,7 +24,6 @@ let timeout;
 let hoveredSecond;
 
 function videoPlayer(props) {
-  const { videos } = props;
   const videoElement = useRef(null);
   const duplicateRangeref = useRef(null);
   const forwordref = useRef(null);
@@ -32,7 +35,7 @@ function videoPlayer(props) {
   const volumeRef = useRef(null);
   const animationRef = useRef();
   const [snapshots, setSnapshots] = useState("");
-  // const videos = [video1, video2, video3, video4];
+  const videos = [];
   const {
     isMuted,
     isPlaying,
@@ -92,7 +95,10 @@ function videoPlayer(props) {
       hoverTime = 0;
     }
     hoveredSecond = hoverTime;
-    secondVideoRef.current.currentTime = hoveredSecond;
+    if (secondVideoRef.current) {
+      secondVideoRef.current.currentTime = hoveredSecond;
+    }
+
     shoot(secondVideoRef.current);
     if (snapshotRef) {
       snapshotRef.current.style.left = e.clientX - 72 + "px";
@@ -252,7 +258,7 @@ function videoPlayer(props) {
                     }}
                     ref={volumeRef}
                     min={0}
-                  />
+                  ></input>
                 </div>
               </div>
             </div>
@@ -292,7 +298,7 @@ function videoPlayer(props) {
                 value={videoElement?.current?.currentTime}
               />
               <div ref={snapshotRef} className="snapshotContainer">
-                <img src={snapshots} className="snapshotImg" />
+                <img src={snapshots} alt="" className="snapshotImg" />
                 <div className="snapshotTime">
                   {calculateTime(hoveredSecond)}
                 </div>
@@ -302,22 +308,6 @@ function videoPlayer(props) {
             <div ref={duplicateRangeref} className="duplicateRange"></div>
           </div>
         </div>
-
-        {/* <div className="controls">
-        <select
-          className="velocity"
-          value={speed}
-          onChange={(e) => handleVideoSpeed(e)}
-        >
-          <option value="0.50">0.50x</option>
-          <option value="1">1x</option>
-          <option value="1.25">1.25x</option>
-          <option value="2">2x</option>
-        </select>
-        <button className="mute-btn" onClick={toggleMute}>
-          {!isMuted ? <BsFillVolumeUpFill /> : <BsFillVolumeMuteFill />}
-        </button>
-      </div> */}
       </div>
     </>
   );

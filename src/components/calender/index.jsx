@@ -9,15 +9,17 @@ import {
 import "./calender.css";
 
 function Calender(props) {
-  const { callback, calender, disableCurrentDate } = props;
+  const { callback, currentDate, disableCurrentDate } = props;
   const days = moment.weekdaysShort();
   const [startFrom, setStartFrom] = useState([]);
   const [totalDays, setTotalDays] = useState([]);
   const [sundays, setSundays] = useState([]);
   const [saturdays, setSaturdays] = useState([]);
-  const [selectDate, setSelectDate] = useState(Number(calender.from.date));
-  const [selectMonth, setSelectMonth] = useState(Number(calender.from.month));
-  const [selectYear, setSelectYear] = useState(Number(calender.from.year));
+  const [selectDate, setSelectDate] = useState(Number(currentDate.from.date));
+  const [selectMonth, setSelectMonth] = useState(
+    Number(currentDate.from.month)
+  );
+  const [selectYear, setSelectYear] = useState(Number(currentDate.from.year));
 
   function getSundays() {
     const days = new Date(selectYear, selectMonth, 0).getDate();
@@ -55,7 +57,7 @@ function Calender(props) {
     getSundays();
     getSaturdays();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectMonth, selectYear, calender]);
+  }, [selectMonth, selectYear, currentDate]);
 
   const updateFromDate = () => {
     setSelectMonth(12);

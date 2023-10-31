@@ -35,7 +35,6 @@ const useVideoPlayer = (videoElement: any) => {
     } else {
       manualChange = progress + 10;
     }
-    console.log(videoElement, "arun");
     videoElement.current.currentTime =
       (videoElement.current.duration / 100) * manualChange;
     setProgress(manualChange);

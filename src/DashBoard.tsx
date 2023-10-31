@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 import React, { ChangeEvent, useState } from "react";
 import "./DashBoard.css";
 import Charts from "./components/chart/Chart";
@@ -15,7 +16,13 @@ import AudioPlayer from "./components/audioPlayer";
 import Calender from "./components/calender";
 import RadioButtonsGroup from "./components/radioButton";
 import Modal from "../src/components/modal";
-
+import video1 from "../src/assets/CinematicBackground.mp4";
+import video2 from "../src/assets/video_1.mp4";
+import video3 from "../src/assets/video_2.mp4";
+import video4 from "../src/assets/video_3.mp4";
+import Game from "../src/components/game/index";
+import ToggleSwitch from "./components/toggleswitch/ToggleSwitch";
+import SearchBar from "./components/searchBox/searchBar";
 function App() {
   const technologies = [
     {
@@ -119,24 +126,34 @@ function App() {
     "Saturday",
     "Sunday ",
   ];
+  // const path = require("path");
   const dataSet = [2112, 2343, 2545, 3423, 2365, 1985, 987];
   const [name, setName] = useState("");
   const [fileName, setFileName] = useState("");
-
+  const [PdffileName, setPdfFileName] = useState("");
   const [showModal, setShowModal] = React.useState(false);
   const [selectedDate, setSelectedDate] = useState("");
+  const videos = [video1, video2, video3, video4];
   function handlechanges(event: any) {
     setName(event.target.value);
   }
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      setFileName(e.target.files[0].name);
-      console.log(e.target.files);
+      getfilePath(e.target.files);
+      // setFileName(e.target.files[0].path);
+      // setPdfFileName(e.target.files[0]);
+      setPdfFileName(URL.createObjectURL(e.target.files[0]));
+      console.log(URL.createObjectURL(e.target.files[0]), "jj");
     }
+  };
+  const getfilePath = (sample: any) => {
+    let abc = document.getElementById(sample);
+    console.log(sample, "arun");
   };
 
   function handleFileupload() {
+    // setPdfFileName(fileName);
     console.log(fileName, "Uploaded fileName");
   }
   const tableData = [
@@ -173,13 +190,8 @@ function App() {
 
   const DropdownOptions = [10, 20, 30, 40];
 
-  const getAcademicCalendar = {
+  const getcurrentDate = {
     from: {
-      date: new Date().getDate(),
-      month: new Date().getMonth() + 1,
-      year: new Date().getFullYear(),
-    },
-    to: {
       date: new Date().getDate(),
       month: new Date().getMonth() + 1,
       year: new Date().getFullYear(),
@@ -189,7 +201,6 @@ function App() {
   function getTheTime(event: { target: { value: any } }) {
     setSelectedDate(event.target.value.date);
     setShowModal(true);
-    console.log(event.target.value);
   }
   const gender = ["Female", "male", "others"];
 
@@ -212,8 +223,42 @@ function App() {
       </>
     );
   }
+
   return (
     <div className=" text-center" onMouseMove={onMouseMove}>
+      <div>
+        <h1 className="componentsHeading">PDF</h1>
+        <iframe
+          src={PdffileName}
+          // src=""
+          width={PdffileName && "100%"}
+          height={PdffileName && "500px"}
+        />
+      </div>
+      <h1 className="componentsHeading">File Uploader</h1>
+      <div>
+        <FileUploader
+          callback={(e) => {
+            handleFileChange(e);
+          }}
+          handleUpload={handleFileupload}
+        />
+        <div>Uploaded file name : {fileName}</div>
+      </div>
+
+      <hr></hr>
+      <div>
+        <h1 className="componentsHeading">search Bar</h1>
+        <SearchBar />
+      </div>
+      <div>
+        <h1 className="componentsHeading">Toggle Switch</h1>
+        <ToggleSwitch />
+      </div>
+      <div>
+        <h1 className="componentsHeading">Tic-Tac-Toe Game</h1>
+        <Game />
+      </div>
       <h1 className="componentsHeading">Radio Button</h1>
       <div className="flex justify-center">
         <RadioButtonsGroup label="gender" options={gender} />
@@ -226,8 +271,8 @@ function App() {
           callback={(e: any) => {
             getTheTime(e);
           }}
-          calender={getAcademicCalendar}
-          disableCurrentDate={true}
+          currentDate={getcurrentDate}
+          disableCurrentDate={false}
         />
       </div>
       <hr></hr>
@@ -248,12 +293,13 @@ function App() {
       <hr></hr>
       <h1 className="componentsHeading">Video Player</h1>
       <div>
-        <VideoPlayer />
+        <VideoPlayer videos={videos} />
       </div>
 
       <hr></hr>
       <h1 className="componentsHeading">Table</h1>
       <div>
+        {/* <Menuitem /> */}
         <h1>Table</h1>
         <Table
           CheckBox={true}
@@ -294,17 +340,7 @@ function App() {
         />
         <div>Entered name :{name}</div>
       </div>
-      <hr></hr>
-      <h1 className="componentsHeading">File Uploader</h1>
-      <div>
-        <FileUploader
-          callback={(e) => {
-            handleFileChange(e);
-          }}
-          handleUpload={handleFileupload}
-        />
-        <div>Uploaded file name : {fileName}</div>
-      </div>
+
       <hr></hr>
       <h1 className="componentsHeading">Grid Controler</h1>
       <div>
