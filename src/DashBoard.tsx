@@ -23,6 +23,9 @@ import video4 from "../src/assets/video_3.mp4";
 import Game from "../src/components/game/index";
 import ToggleSwitch from "./components/toggleswitch/ToggleSwitch";
 import SearchBar from "./components/searchBox/searchBar";
+import { FaWindowClose } from "react-icons/fa";
+import PdfViewer from "./components/pdf/PDFViewer";
+
 function App() {
   const technologies = [
     {
@@ -140,20 +143,13 @@ function App() {
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      getfilePath(e.target.files);
-      // setFileName(e.target.files[0].path);
-      // setPdfFileName(e.target.files[0]);
+      setFileName(e.target.files[0].name);
       setPdfFileName(URL.createObjectURL(e.target.files[0]));
       console.log(URL.createObjectURL(e.target.files[0]), "jj");
     }
   };
-  const getfilePath = (sample: any) => {
-    let abc = document.getElementById(sample);
-    console.log(sample, "arun");
-  };
-
   function handleFileupload() {
-    // setPdfFileName(fileName);
+    setPdfFileName(fileName);
     console.log(fileName, "Uploaded fileName");
   }
   const tableData = [
@@ -227,13 +223,39 @@ function App() {
   return (
     <div className=" text-center" onMouseMove={onMouseMove}>
       <div>
-        <h1 className="componentsHeading">PDF</h1>
-        <iframe
-          src={PdffileName}
-          // src=""
-          width={PdffileName && "100%"}
-          height={PdffileName && "500px"}
-        />
+        <h1 className="componentsHeading">Document Viewer</h1>
+
+        <span>
+          {PdffileName ? (
+            <div>
+              <div className=" flex justify-center cursor-pointer ">
+                <div
+                  className="w-1/4 border-solid border-2 border-[#242424] underline text-[#242424]"
+                  onClick={() => {
+                    setPdfFileName("");
+                  }}
+                >
+                  You can change PDF file here
+                </div>
+              </div>
+              <div className="PdfContainer">
+                <PdfViewer file={PdffileName} />
+              </div>
+            </div>
+          ) : (
+            <div>
+              <FileUploader
+                callback={(e) => {
+                  handleFileChange(e);
+                }}
+                handleUpload={handleFileupload}
+                name={""}
+                accept="pdf"
+                showUpload={false}
+              />
+            </div>
+          )}
+        </span>
       </div>
       <h1 className="componentsHeading">File Uploader</h1>
       <div>
@@ -242,6 +264,8 @@ function App() {
             handleFileChange(e);
           }}
           handleUpload={handleFileupload}
+          name={"File Upload"}
+          showUpload={true}
         />
         <div>Uploaded file name : {fileName}</div>
       </div>

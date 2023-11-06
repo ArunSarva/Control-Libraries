@@ -2,7 +2,6 @@ import React from "react";
 import DashBoard from "./DashBoard";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/header/Header";
-import Footer from "./components/Footer";
 import FileUploader from "./components/FileUploader";
 import GridControler from "./components/gridcontroler/GridControler";
 import InputControl from "./components/inputControl/InputControl";
@@ -18,7 +17,12 @@ function Routing() {
           <Route
             path="/fileupload"
             element={
-              <FileUploader callback={() => {}} handleUpload={() => {}} />
+              <FileUploader
+                callback={() => {}}
+                handleUpload={() => {}}
+                name="File Upload"
+                showUpload={true}
+              />
             }
           />
           <Route path="/grid" element={<GridControler />} />

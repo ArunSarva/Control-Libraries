@@ -86,9 +86,9 @@ function Table(props: {
     setSelected(newSelected);
   };
 
-  function isSelected(name: string) {
-    return selected.indexOf(name) !== -1;
-  }
+  // function isSelected(name: string) {
+  //   return selected.indexOf(name) !== -1;
+  // }
 
   function handleSelectAllClick(event: React.ChangeEvent<HTMLInputElement>) {
     if (event.target.checked) {
@@ -254,9 +254,9 @@ function Table(props: {
                 },
                 index: React.Key | null | undefined
               ) => {
-                const isItemSelected = isSelected(
-                  row[localCheckBoxKey] as string
-                );
+                // const isItemSelected = isSelected(
+                //   row[localCheckBoxKey] as string
+                // );
                 return (
                   <tr
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
