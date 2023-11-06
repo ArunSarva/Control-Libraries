@@ -24,6 +24,7 @@ import Game from "../src/components/game/index";
 import ToggleSwitch from "./components/toggleswitch/ToggleSwitch";
 import SearchBar from "./components/searchBox/searchBar";
 import { FaWindowClose } from "react-icons/fa";
+import PdfViewer from "./components/pdf/PDFViewer";
 
 function App() {
   const technologies = [
@@ -223,24 +224,23 @@ function App() {
     <div className=" text-center" onMouseMove={onMouseMove}>
       <div>
         <h1 className="componentsHeading">Document Viewer</h1>
+
         <span>
           {PdffileName ? (
             <div>
-              <div className=" bg-[#323639] text-[#ffffff] flex justify-end ">
+              <div className=" flex justify-center cursor-pointer ">
                 <div
+                  className="w-1/4 border-solid border-2 border-[#242424] underline text-[#242424]"
                   onClick={() => {
                     setPdfFileName("");
                   }}
                 >
-                  <FaWindowClose />
+                  You can change PDF file here
                 </div>
               </div>
-              <iframe
-                src={PdffileName}
-                // src=""
-                width={PdffileName && "100%"}
-                height={PdffileName && "500px"}
-              />
+              <div className="PdfContainer">
+                <PdfViewer file={PdffileName} />
+              </div>
             </div>
           ) : (
             <div>
@@ -250,6 +250,7 @@ function App() {
                 }}
                 handleUpload={handleFileupload}
                 name={""}
+                accept="pdf"
                 showUpload={false}
               />
             </div>
