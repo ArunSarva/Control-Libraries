@@ -23,7 +23,6 @@ import video4 from "../src/assets/video_3.mp4";
 import Game from "../src/components/game/index";
 import ToggleSwitch from "./components/toggleswitch/ToggleSwitch";
 import SearchBar from "./components/searchBox/searchBar";
-import { FaWindowClose } from "react-icons/fa";
 import PdfViewer from "./components/pdf/PDFViewer";
 
 function App() {
@@ -230,9 +229,10 @@ function App() {
             <div>
               <div className=" flex justify-center cursor-pointer ">
                 <div
-                  className="w-1/4 border-solid border-2 border-[#242424] underline text-[#242424]"
+                  className="w-1/4 border-solid border-2 bg-slate-400 border-[#242424] underline text-[#242424]"
                   onClick={() => {
                     setPdfFileName("");
+                    document.getElementById("formFile")?.click();
                   }}
                 >
                   You can change PDF file here
@@ -250,7 +250,7 @@ function App() {
                 }}
                 handleUpload={handleFileupload}
                 name={""}
-                accept="pdf"
+                accept=".pdf"
                 showUpload={false}
               />
             </div>
