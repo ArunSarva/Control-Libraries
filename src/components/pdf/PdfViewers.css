@@ -8,7 +8,7 @@
     color: white;
     width: 25%;
     border-radius: 10px;
-    padding: 10px;
+    /* padding: 10px; */
 }
 
 .react-pdf__Page{
@@ -23,8 +23,13 @@
 }
 
 .PdfControlsButton:hover{
-    background-color: #bebebe;
-    color: #606061;
-    padding: 5px;
+    background-color:   #797878;
+    color: #000000;
+    padding: 10px;
     border-radius: 5px;
+}
+.PdfControlsButton{
+    padding: 10px;
+    height: 40px;
+    width: 40px;
 }
