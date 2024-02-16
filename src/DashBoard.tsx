@@ -24,6 +24,9 @@ import Game from "../src/components/game/index";
 import ToggleSwitch from "./components/toggleswitch/ToggleSwitch";
 import SearchBar from "./components/searchBox/searchBar";
 import PdfViewer from "./components/pdf/PDFViewer";
+import BasicCalculator from "./components/calculator/BasicCalculator";
+import ScientificCalculator from "./components/calculator/ScientificCalculator";
+import { AudioRecorder } from "./components/audio recorder/AudioRec";
 
 function App() {
   const technologies = [
@@ -198,7 +201,11 @@ function App() {
     setShowModal(true);
   }
   const gender = ["Female", "male", "others"];
-
+  function callAnApi() {
+    fetch("https://jsonplaceholder.typicode.com/todos/1")
+      .then((response) => response.json())
+      .then((json) => console.log(json));
+  }
   function modalBody() {
     return (
       <>
@@ -221,6 +228,22 @@ function App() {
 
   return (
     <div className=" text-center" onMouseMove={onMouseMove}>
+      <div>{/* <AudioRecorder /> */}</div>
+      <div
+        onClick={() => {
+          callAnApi();
+        }}
+      >
+        call the API
+      </div>
+      <div>
+        <h1 className="componentsHeading">Scientific Calculator </h1>
+        <ScientificCalculator />
+      </div>
+      <div>
+        <h1 className="componentsHeading">Basic Calculator</h1>
+        <BasicCalculator />
+      </div>
       <div>
         <h1 className="componentsHeading">Document Viewer</h1>
 
@@ -285,7 +308,7 @@ function App() {
       </div>
       <h1 className="componentsHeading">Radio Button</h1>
       <div className="flex justify-center">
-        <RadioButtonsGroup label="gender" options={gender} />
+        <RadioButtonsGroup RadioGroupName="gender" options={gender} />
       </div>
       <hr></hr>
 

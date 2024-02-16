@@ -75,7 +75,7 @@ const Board = ({ reset, setReset, winner, setWinner }) => {
   });
 
   return (
-    <div>
+    <div className="layout">
       <div ref={boardRef} className="board">
         <div className="gameinput input-1" onClick={(e) => draw(e, 1)}></div>
         <div className="gameinput input-2" onClick={(e) => draw(e, 2)}></div>

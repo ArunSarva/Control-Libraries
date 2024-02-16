@@ -58,8 +58,8 @@ video::-webkit-media-controls-timeline {
 .actions{
   margin-top: -10px;
   background-color: none;
-  color: white;
-  font-size: 30px;
+  color: white !important;
+  font-size: 25px;
 }
 
 .velocity {

@@ -6,16 +6,18 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 
 interface props {
-  label: string;
+  RadioGroupName: string;
   options: number[] | string[];
 }
 
 export default function RadioButtonsGroup(props: props) {
-  const { label, options } = props;
+  const { RadioGroupName, options } = props;
 
   return (
     <FormControl>
-      <FormLabel id="demo-radio-buttons-group-label">{label}</FormLabel>
+      <FormLabel id="demo-radio-buttons-group-label">
+        {RadioGroupName}
+      </FormLabel>
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"
         defaultValue="male"
@@ -25,6 +27,7 @@ export default function RadioButtonsGroup(props: props) {
           return (
             <FormControlLabel
               key={index}
+              id={"abc" + index}
               value={items}
               control={<Radio />}
               label={items}

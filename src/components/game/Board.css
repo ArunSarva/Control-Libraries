@@ -5,7 +5,6 @@
 }
 
 .board {
-	width: 22vw;
 	height: 50%;
 	background-color: var(--board-background);
 	display: flex;
@@ -64,4 +63,9 @@
 
 .input-8 {
 	border-right: var(--border-thickness) dashed var(--border-color);
+}
+
+.layout{
+	width: 300px;
+	margin: auto;
 }
