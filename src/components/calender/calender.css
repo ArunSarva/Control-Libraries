@@ -26,7 +26,7 @@
     font-weight: 700;
     width: 42px;
     font-size: 14px;
-    color: #808080;
+    color: #757575;
     margin: 0px 0px 8px 0;
   }
   
@@ -35,7 +35,7 @@
     justify-content: center;
     align-items: center;
     width: 42px !important;
-    color: #ADADAD;
+    color: #4F4F4F;
     font-weight: 600;
     font-size: 14px;
     height: 30px;
@@ -46,7 +46,7 @@
   }
   
   .date-corner {
-    color: #47A5C8;
+    color: #307A97;
   }
   
   .date-current {
@@ -54,7 +54,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 70px;
-    background-color: #47A5C8;
+    background-color: #307A97;
     color: white;
     width: 30px;
     height: 30px;
@@ -62,7 +62,7 @@
   }
 
   .date-current:hover{
-    background-color: #47A5C8;
+    background-color: #307A97;
   }
   
   .date-inner:hover{
@@ -114,11 +114,11 @@
     justify-content: center;
     align-items: center;
     border-radius: 4px;
-    background-color: #47A5C8;
+    background-color: #307A97;
     color: white;
     font-weight: 600;
     min-width: 80px;
-    border: 1px solid #47A5C8;
+    border: 1px solid #307A97;
   }
   
   .picker-divider {

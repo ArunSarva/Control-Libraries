@@ -11,12 +11,12 @@ function Header() {
 
   return (
     <>
-      <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+      <nav className="flex items-center justify-between flex-wrap bg-teal-500 text-#000000 p-6">
         <div
           onClick={() => {
             navigate("/");
           }}
-          className="flex cursor-pointer items-center flex-shrink-0 text-white mr-6"
+          className="flex cursor-pointer items-center flex-shrink-0 text-#000000 mr-6"
         >
           <svg
             className="fill-current h-8 w-8 mr-2"
@@ -54,7 +54,7 @@ function Header() {
               onClick={() => {
                 navigate("fileupload");
               }}
-              className="block cursor-pointer mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+              className="block cursor-pointer mt-4 lg:inline-block lg:mt-0 text-#000000 hover:text-white mr-4"
             >
               File Upload
             </div>
@@ -62,7 +62,7 @@ function Header() {
               onClick={() => {
                 navigate("inputcontrol");
               }}
-              className="block cursor-pointer mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+              className="block cursor-pointer mt-4 lg:inline-block lg:mt-0 text-#000000 hover:text-white mr-4"
             >
               Input control
             </div>
@@ -70,7 +70,7 @@ function Header() {
               onClick={() => {
                 navigate("Chart");
               }}
-              className="block cursor-pointer mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+              className="block cursor-pointer mt-4 lg:inline-block lg:mt-0 text-#000000 hover:text-white mr-4"
             >
               Chart
             </div>
@@ -78,7 +78,7 @@ function Header() {
               onClick={() => {
                 navigate("table");
               }}
-              className="block cursor-pointer mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+              className="block cursor-pointer mt-4 lg:inline-block lg:mt-0 text-#000000 hover:text-white mr-4"
             >
               Table
             </div>
@@ -86,7 +86,7 @@ function Header() {
               onClick={() => {
                 navigate("grid");
               }}
-              className="block cursor-pointer mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white"
+              className="block cursor-pointer mt-4 lg:inline-block lg:mt-0 text-#000000 hover:text-white"
             >
               Grid
             </div>
@@ -96,7 +96,7 @@ function Header() {
               onClick={() => {
                 navigate("/");
               }}
-              className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
+              className="inline-block text-sm px-4 py-2 leading-none border rounded text-#000000 border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
             >
               Home
             </div>

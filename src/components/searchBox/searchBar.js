@@ -16,6 +16,7 @@ const SearchBar = (props) => {
 
   return (
     <input
+      id="searchbar"
       type="search"
       placeholder={props?.placeHolder || "Search Here ..."}
       onChange={handleSearch}

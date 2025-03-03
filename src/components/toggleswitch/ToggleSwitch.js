@@ -37,7 +37,7 @@ const ToggleSwitch = (props) => {
       position: "absolute",
       top: "2px",
       marginLeft: "50px",
-      color: isOn ? "#2ecc71" : "#ff0000",
+      color: isOn ? "#2ecc71" : "#E5242F",
       fontWeight: "bold",
     },
   };
@@ -46,6 +46,7 @@ const ToggleSwitch = (props) => {
     <>
       <label style={styles.switch} className="toggle-switch">
         <input
+          id="toggle"
           type="checkbox"
           checked={isOn}
           onChange={handleToggle}

@@ -21,7 +21,7 @@ let hoveredSecond;
 
 function videoPlayer(props) {
   const { videos } = props;
-  const videoElement = useRef(null);
+  const videoElement = useRef(undefined);
   const duplicateRangeref = useRef(null);
   const forwordref = useRef(null);
   const [isMetadata, setIsMetaData] = useState(false);
@@ -206,7 +206,10 @@ function videoPlayer(props) {
                 <FaBackward />
               </div>
               <div className="actions">
-                <button onClick={togglePlay}>
+                <button
+                  onClick={togglePlay}
+                  aria-label={!isPlaying ? "Play" : "Pause"}
+                >
                   {!isPlaying ? <BsPlay /> : <BsPause />}
                 </button>
               </div>
@@ -230,6 +233,7 @@ function videoPlayer(props) {
                 <select
                   className="velocity"
                   value={speed}
+                  aria-label="speed changer"
                   onChange={(e) => handleVideoSpeed(e)}
                 >
                   <option value="0.50">0.50x</option>
@@ -240,12 +244,17 @@ function videoPlayer(props) {
               </div>
               <div></div>
               <div className="volumeContainer flex justify-between">
-                <button className="mute-btn" onClick={toggleMute}>
+                <button
+                  className="mute-btn"
+                  onClick={toggleMute}
+                  aria-label="Mute Button"
+                >
                   {!isMuted ? <BsFillVolumeUpFill /> : <BsFillVolumeMuteFill />}
                 </button>
                 <div className="volumeControlContainer">
                   <input
                     className="volumeControl"
+                    aria-label="volumeControl"
                     type="range"
                     onChange={() => {
                       handleVolumeChange();
@@ -279,6 +288,7 @@ function videoPlayer(props) {
             <div className="range">
               <input
                 type="range"
+                aria-label="video-line"
                 className="amount-progress"
                 step="any"
                 ref={progressRef}
@@ -304,20 +314,20 @@ function videoPlayer(props) {
         </div>
 
         {/* <div className="controls">
-        <select
-          className="velocity"
-          value={speed}
-          onChange={(e) => handleVideoSpeed(e)}
-        >
-          <option value="0.50">0.50x</option>
-          <option value="1">1x</option>
-          <option value="1.25">1.25x</option>
-          <option value="2">2x</option>
-        </select>
-        <button className="mute-btn" onClick={toggleMute}>
-          {!isMuted ? <BsFillVolumeUpFill /> : <BsFillVolumeMuteFill />}
-        </button>
-      </div> */}
+          <select
+            className="velocity"
+            value={speed}
+            onChange={(e) => handleVideoSpeed(e)}
+          >
+            <option value="0.50">0.50x</option>
+            <option value="1">1x</option>
+            <option value="1.25">1.25x</option>
+            <option value="2">2x</option>
+          </select>
+          <button className="mute-btn" onClick={toggleMute}>
+            {!isMuted ? <BsFillVolumeUpFill /> : <BsFillVolumeMuteFill />}
+          </button>
+        </div> */}
       </div>
     </>
   );
